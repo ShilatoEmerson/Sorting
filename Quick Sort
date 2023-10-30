@@ -1,0 +1,32 @@
+const a= [4,6,3,8,1,9]
+
+const QuickSort=(arr,low,high)=>{
+    if(low<high){
+        let pidx=partition(arr,low,high);
+        QuickSort(arr,low,pidx-1)
+        QuickSort(arr,pidx+1,high)
+    }
+    return arr
+}
+
+const partition=(arr,low,high)=>{
+    const pivot=arr[high];
+    let i=low-1;
+    for(let j=low;j<high;j++){
+        if(arr[j]<pivot){
+            i++;
+            swap(arr,i,j)
+        }
+    }
+    i++;
+    swap(arr,i,high)
+    return i
+}
+const swap=(arr,i,j)=>{
+    let temp=arr[i]
+    arr[i]=arr[j]
+    arr[j]=temp
+    
+}
+
+console.log(QuickSort(a,0,a.length-1))
