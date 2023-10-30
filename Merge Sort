@@ -1,0 +1,35 @@
+const a = [4, 6, 3, 8, 1, 9];
+
+const MergeSort = (arr) => {
+  debugger;
+  const len = arr.length;
+  if (len === 1) {
+    return arr;
+  }
+  const mid = Math.floor(len / 2);
+  const leftArr = arr.slice(0, mid);
+  const rightArr = arr.slice(mid);
+  //console.log(leftArr,rightArr)
+  return MergeConqer(MergeSort(leftArr), MergeSort(rightArr));
+};
+
+const MergeConqer = (leftArr, rightArr) => {
+  const sorting = [];
+  let left = 0;
+  let right = 0;
+  while (left < leftArr.length && right < rightArr.length) {
+    //console.log(leftArr, rightArr);
+    if (leftArr[left] < rightArr[right]) {
+      sorting.push(leftArr[left]);
+      left++;
+    } else {
+      sorting.push(rightArr[right]);
+      right++;
+    }
+  }
+  //console.log(sorted);
+  return sorting.concat(leftArr.slice(left)).concat(rightArr.slice(right));
+};
+
+console.log(MergeSort(a));
+
