@@ -1,0 +1,16 @@
+const a = [10,6,4,7,8,3]
+const sorting=(num)=>{
+for(let i=0;i<num.length;i++){
+let min=i
+let temp=num[i]
+for(let j=i+1;j<num.length;j++){
+if(num[j]<num[min]){
+min=j
+}
+}
+num[i]=num[min]
+num[min]=temp
+}
+return num
+};
+console.log(sorting(a))
